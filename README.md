@@ -18,7 +18,7 @@ OR
 ```TriggerEvent("redemrp_notification:start", text, timer)```
 
 
-You can unloack test command in client.lua
+You can unlock test command in client.lua
 
 ## 4. Credits
 [Ktos93](http://github.com/amakuu)
