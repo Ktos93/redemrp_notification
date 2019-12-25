@@ -36,10 +36,6 @@ AddEventHandler('redemrp_notification:start',  function(_text, _timer)
 end)
 
 
-RegisterCommand('test', function(source)
-   TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5)
-end)
-
 function hideUI()
     SendNUIMessage({
         type = "ui",
