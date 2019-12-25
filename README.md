@@ -8,9 +8,9 @@ Add ```ensure redemrp_notification``` in server.cfg
 You can use:
 ```TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5)```
 
-```local timer = 5 
-local text = "Simple test redemrp_notification"
-TriggerEvent("redemrp_notification:start", text, timer)```
+```local timer = 5```
+```local text = "Simple test redemrp_notification"```
+```TriggerEvent("redemrp_notification:start", text, timer)```
 
 You can unloack test command in client.lua
 
