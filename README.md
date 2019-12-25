@@ -9,6 +9,8 @@ You can use:
 
 ```TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5)```
 
+OR
+
 ```local timer = 5```
 
 ```local text = "Simple test redemrp_notification"```
