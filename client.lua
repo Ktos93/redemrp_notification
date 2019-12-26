@@ -1,12 +1,15 @@
 local show = true
 local active = false
 local liczba = 1
-
-
+local ProgressColor = {100, 1, 1}
+local global_text
+local global_timer
+local global_type
 ------------EXAMPLE------------------------
 --	  local timer = 5 
+--	  local type = "success" 
 --    local text = "Simple test redemrp_notification"
---    TriggerEvent("redemrp_notification:start", text, timer)
+--    TriggerEvent("redemrp_notification:start", text, timer, type)
 --------------OR-------------------------
 
 --    TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5)
@@ -15,17 +18,33 @@ local liczba = 1
 --[[
 
 RegisterCommand('test', function(source)
-   TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5)
+   TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5, "success")
 end)
 
 ]]
 
 
 RegisterNetEvent('redemrp_notification:start')
-AddEventHandler('redemrp_notification:start',  function(_text, _timer)
+AddEventHandler('redemrp_notification:start',  function(_text, _timer, _type)
+global_type = _type
+global_text = _text
+global_timer =_timer
+if _type == "error" then
+	ProgressColor =  {100, 1, 1}
+elseif _type == "success" then
+	ProgressColor =  {37, 87, 5}
+elseif _type == "warning" then
+	ProgressColor =  {191, 143, 0}
+else
+	ProgressColor =  {100, 1, 1}
+end
     if active then
+	  Citizen.CreateThread(function()
         active = false
         hideUI()
+		 Citizen.Wait(100)
+		TriggerEvent("redemrp_notification:start", global_text , global_timer, global_type)
+		end)
     else
         active = true
         liczba = GetLengthOfLiteralString(_text)
@@ -35,6 +54,10 @@ AddEventHandler('redemrp_notification:start',  function(_text, _timer)
     end
 end)
 
+
+RegisterCommand('test', function(source)
+   TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification " , 5, "success")
+end)
 
 function hideUI()
     SendNUIMessage({
@@ -92,7 +115,7 @@ function bg(_timer)
         while  show and timer > 0 do
             Citizen.Wait(0)
             DrawSprite("generic_textures", "hud_menu_4a", 0.15, 0.57+offset, 0.25, height, 0.2, 000, 2, 2, 255, 1)
-            DrawSprite("generic_textures", "hud_menu_4a", 0.15, load_offset +(offset*2), loading, 0.01, 0.2, 100, 1, 1, 190, 0)
+            DrawSprite("generic_textures", "hud_menu_4a", 0.15, load_offset +(offset*2), loading, 0.01, 0.2, ProgressColor[1], ProgressColor[2], ProgressColor[3], 190, 0)
             timer = timer - 1
             loading = loading - del
         end
