@@ -12,7 +12,7 @@ local global_type
 --    TriggerEvent("redemrp_notification:start", text, timer, type)
 --------------OR-------------------------
 
---    TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5)
+--    TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5, "success")
 
 -------------TEST COMMAND-------------
 --[[
