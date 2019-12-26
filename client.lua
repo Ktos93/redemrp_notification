@@ -55,10 +55,6 @@ end
 end)
 
 
-RegisterCommand('test', function(source)
-   TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification " , 5, "success")
-end)
-
 function hideUI()
     SendNUIMessage({
         type = "ui",
