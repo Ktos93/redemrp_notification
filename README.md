@@ -17,10 +17,11 @@ OR
 
 ```TriggerEvent("redemrp_notification:start", text, timer)```
 
+Changing 5 to 3 or something else you can change notification time.
 
 You can unlock test command in client.lua
 
 ## 4. Credits
-[Ktos93](http://github.com/amakuu)
+[Ktos93](http://github.com/Ktos93)
 
 Join discord to get support! - https://discord.gg/FKH4uwb
