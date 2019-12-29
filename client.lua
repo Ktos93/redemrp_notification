@@ -17,8 +17,12 @@ local global_type
 -------------TEST COMMAND-------------
 --[[
 
-RegisterCommand('test', function(source)
-   TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5, "success")
+RegisterCommand('test_notification', function(source, args)
+ local text = ''
+    for i = 1,#args do
+        text = text .. ' ' .. args[i]
+    end
+   TriggerEvent("redemrp_notification:start", text , 5, "success")
 end)
 
 ]]
@@ -55,13 +59,7 @@ end
 end)
 
 
-RegisterCommand('test', function(source, args)
- local text = ''
-    for i = 1,#args do
-        text = text .. ' ' .. args[i]
-    end
-   TriggerEvent("redemrp_notification:start", text , 5, "success")
-end)
+
 
 function hideUI()
     SendNUIMessage({
@@ -112,6 +110,7 @@ function bg(_timer)
     end
     print(offset)
     HasStreamedTextureDictLoaded("generic_textures")
+    HasStreamedTextureDictLoaded("feeds")
     Citizen.CreateThread(function()
         local timer = _timer*100
         local loading = 0.22
