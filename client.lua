@@ -12,7 +12,7 @@ local global_type
 --    TriggerEvent("redemrp_notification:start", text, timer, type)
 --------------OR-------------------------
 
---    TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5, "success")
+--    TriggerEvent("redemrp_notification:start", "Simple test redemrp_notification" , 5)
 
 -------------TEST COMMAND-------------
 --[[
@@ -54,6 +54,14 @@ end
     end
 end)
 
+
+RegisterCommand('test', function(source, args)
+ local text = ''
+    for i = 1,#args do
+        text = text .. ' ' .. args[i]
+    end
+   TriggerEvent("redemrp_notification:start", text , 5, "success")
+end)
 
 function hideUI()
     SendNUIMessage({
@@ -110,7 +118,7 @@ function bg(_timer)
         local del = loading/timer
         while  show and timer > 0 do
             Citizen.Wait(0)
-            DrawSprite("generic_textures", "hud_menu_4a", 0.15, 0.57+offset, 0.25, height, 0.2, 000, 2, 2, 255, 1)
+            DrawSprite("feeds", "toast_bg", 0.15, 0.57+offset, 0.25, height, 0.2, 000, 2, 2, 255, 1)
             DrawSprite("generic_textures", "hud_menu_4a", 0.15, load_offset +(offset*2), loading, 0.01, 0.2, ProgressColor[1], ProgressColor[2], ProgressColor[3], 190, 0)
             timer = timer - 1
             loading = loading - del

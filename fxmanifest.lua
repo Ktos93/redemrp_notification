@@ -15,4 +15,3 @@ files {
 	'html/style.css',
 	'html/crock.ttf',
 }
-export "startUI"
